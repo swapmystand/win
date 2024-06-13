@@ -20,6 +20,11 @@
             -moz-user-select: none; /* Firefox */
             -ms-user-select: none; /* Internet Explorer/Edge */
         }
+        h2 {
+            color: #034a75;
+            text-align: center;
+            margin-bottom: 20px;
+        }
         #chart {
             width: 85%;
             max-width: 500px;
@@ -50,6 +55,7 @@
     </style>
 </head>
 <body>
+    <h2>Spin the wheel, Gogo!</h2>
     <div id="chart"></div>
     <div id="question"><h1></h1></div>
 
@@ -143,7 +149,7 @@
                 .duration(3000)
                 .attrTween("transform", rotTween)
                 .each("end", function() {
-                    d3.select(".slice:nth-child(" + (picked + 1) + ") path").attr("fill", "rgba(0, 0, 0, 0.65)");
+                    d3.select(".slice:nth-child(" + (picked + 1) + ") path").attr("fill", "rgba(0, 0, 0, 0.7)");
                     d3.select("#question h1").text(data[picked].question);
                     oldrotation = rotation;
                     container.on("click", spin);
@@ -160,14 +166,14 @@
             .attr("cx", 0)
             .attr("cy", 0)
             .attr("r", 60)
-            .style({"fill":"#dbd9ff","cursor":"pointer"});
+            .style({"fill":"white","cursor":"pointer"});
 
         container.append("text")
             .attr("x", 0)
             .attr("y", 15)
             .attr("text-anchor", "middle")
             .text("SPIN")
-            .style({"font-weight":"bold","font-size":"30px","fill":"#034a75"});
+            .style({"font-weight":"bold","font-size":"30px", "fill": "#034a75"});
 
         function rotTween(to) {
             var i = d3.interpolate(oldrotation % 360, rotation);
